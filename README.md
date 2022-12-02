@@ -6,64 +6,71 @@ IP: 162.55.220.72
 Port: 5005
 ```
 ____________________
-EP_1
+
+### :small_orange_diamond: [EP_1](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_1,-%22%2C)
+```
 Method: GET
 EndPoint: /get_method
 request url params: 
  name: str
  age: int
-
+```
+```
 response: 
 [
     “Str”,
     “Str”
 ]
+```
+____________________
 
-==================
-
-EP_2
+### :small_orange_diamond: [EP_2](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_2,-%22%2C)
+```
 Method: POST
 EndPoint: /user_info_3
 request form data: 
  name: str
  age: int
  salary: int
-
+```
+```
 response: 
 {'name': name,
           'age': age,
           'salary': salary,
           'family': {'children': [['Alex', 24], ['Kate', 12]],
                      'u_salary_1_5_year': salary * 4}}
+```
+____________________
 
-
-==================
-
-EP_3
+### :small_orange_diamond: [EP_3](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_3,-%22%2C)
+```
 Method: GET
 EndPoint: /object_info_1
 request url params: 
  name: str
  age: int
  weight: int
-
+```
+```
 response: 
 {'name': name,
           'age': age,
           'daily_food': weight * 0.012,
           'daily_sleep': weight * 2.5}
+```
+____________________
 
-
-==================
-
-EP_4
+### :small_orange_diamond: [EP_4](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_4,-%22%2C)
+```
 Method: GET
 EndPoint: /object_info_2
 request url params: 
  name: str
  age: int
  salary: int
-
+```
+```
 response: 
 {'start_qa_salary': salary,
           'qa_salary_after_6_months': salary * 2,
@@ -74,18 +81,19 @@ response:
                      'u_age': age,
                      'u_salary_5_years': salary * 4.2}
           }
+```
+____________________
 
-
-==================
-
-EP_5
+### :small_orange_diamond: [EP_5](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_5,-%22%2C)
+```
 Method: GET
 EndPoint: /object_info_3
 request url params: 
  name: str
  age: int
  salary: int
-
+```
+```
 response: 
 {'name': name,
           'age': age,
@@ -97,26 +105,28 @@ response:
                                      'age': 4}},
                      'u_salary_1_5_year': salary * 4}
           }
+```
+____________________
 
-
-==================
-
-EP_6
+### :small_orange_diamond: [EP_6](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_6,-%22%2C)
+```
 Method: GET
 EndPoint: /object_info_4
 request url params: 
  name: str
  age: int
  salary: int
-
+```
+```
 response: 
 {'name': name,
           'age': int(age),
           'salary': [salary, str(salary * 2), str(salary * 3)]}
+```
+____________________
 
-
-==================
-
+### :small_orange_diamond: [EP_7](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_7,-%22%2C)
+```
 EP_7
 Method: POST
 EndPoint: /user_info_2
@@ -124,7 +134,8 @@ request form data:
  name: str
  age: int
  salary: int
-
+```
+```
 response: 
 {'start_qa_salary': salary,
           'qa_salary_after_6_months': salary * 2,
@@ -135,3 +146,5 @@ response:
                      'u_age': age,
                      'u_salary_5_years': salary * 4.2}
           }
+```
+          

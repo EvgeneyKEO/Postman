@@ -127,7 +127,6 @@ ____________________
 
 ### :small_orange_diamond: [EP_7](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_7,-%22%2C)
 ```
-EP_7
 Method: POST
 EndPoint: /user_info_2
 request form data: 

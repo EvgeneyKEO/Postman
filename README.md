@@ -1,18 +1,18 @@
 ### _CONTENT_
 ### [:arrow_forward: Postman_HW_1](https://github.com/EvgeneyKEO/Postman#large_orange_diamond-postman_hw_1)
-> [:one: EP_1]()
+> [:one: EP_1](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-ep_1)
 
-> [:two: EP_2]()
+> [:two: EP_2](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-ep_2)
 
-> [:three: EP_3]()
+> [:three: EP_3](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-ep_3)
 
-> [:four: EP_4]()
+> [:four: EP_4](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-ep_4)
 
-> [:five: EP_5]()
+> [:five: EP_5](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-ep_5)
 
-> [:six: EP_6]()
+> [:six: EP_6](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-ep_6)
 
-> [:five: EP_7]()
+> [:five: EP_7](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-ep_7)
 
 
 ### [:arrow_forward: Postman_HW_2](https://github.com/EvgeneyKEO/Postman#large_orange_diamond-postman_hw_2)

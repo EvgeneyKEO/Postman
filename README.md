@@ -18,7 +18,7 @@ __________________
 [:five: №_5](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-5)
 ___________________
 # :large_orange_diamond: [Postman_HW_1](https://github.com/EvgeneyKEO/Postman/blob/9d4ab651c2b9739fea00c9e1ffc1bf2bb84599f2/Home%20work%20%231.postman_collection.json)
-Создать запросы в Postman.
+### _Создать запросы в Postman_
 ```
 Protocol: http
 IP: 162.55.220.72
@@ -27,6 +27,7 @@ Port: 5005
 ____________________
 
 ### :small_orange_diamond: [EP_1](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_1,-%22%2C)
+### _Дано_
 ```
 Method: GET
 EndPoint: /get_method
@@ -34,7 +35,7 @@ request url params:
  name: str
  age: int
 ```
-### _Решение_
+### _Решение:_
 ```
 1. Создаем новую коллекцию - переходим в раздел "Collections" --> нажимаем "+" 
 2. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
@@ -50,6 +51,7 @@ request url params:
 ____________________
 
 ### :small_orange_diamond: [EP_2](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_2,-%22%2C)
+### _Дано_
 ```
 Method: POST
 EndPoint: /user_info_3
@@ -58,7 +60,7 @@ request form data:
  age: int
  salary: int
 ```
-### _Решение_
+### _Решение:_
 ```
 1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
 2. Выбираем метод запроса POST, вставляем в URL - http://162.55.220.72:5006/user_info_3
@@ -80,6 +82,7 @@ request form data:
 ____________________
 
 ### :small_orange_diamond: [EP_3](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_3,-%22%2C)
+### _Дано_
 ```
 Method: GET
 EndPoint: /object_info_1
@@ -88,8 +91,8 @@ request url params:
  age: int
  weight: int
 ```
+### _Что должно придти в response:_
 ```
-Что должно придти в response:
 {
  'name': name,
  'age': age,
@@ -97,7 +100,7 @@ request url params:
  'daily_sleep': weight * 2.5
 }
 ```
-### _Решение_
+### _Решение:_
 ```
 1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
 2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/object_info_1
@@ -114,6 +117,7 @@ request url params:
 ____________________
 
 ### :small_orange_diamond: [EP_4](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_4,-%22%2C)
+### _Дано_
 ```
 Method: GET
 EndPoint: /object_info_2
@@ -122,8 +126,8 @@ request url params:
  age: int
  salary: int
 ```
+### _Что должно придти в response:_
 ```
-Что должно придти в response:
 {
  'start_qa_salary': salary,
  'qa_salary_after_6_months': salary * 2,
@@ -135,7 +139,7 @@ request url params:
             'u_salary_5_years': salary * 4.2}
 }
 ```
-### _Решение_
+### _Решение:_
 ```
 1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
 2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/object_info_2
@@ -158,6 +162,7 @@ request url params:
 ____________________
 
 ### :small_orange_diamond: [EP_5](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_5,-%22%2C)
+### _Дано_
 ```
 Method: GET
 EndPoint: /object_info_3
@@ -166,8 +171,8 @@ request url params:
  age: int
  salary: int
 ```
+### _Что должно придти в response:_
 ```
-Что должно придти в response:
 {
  'name': name,
  'age': age,
@@ -183,7 +188,7 @@ request url params:
   'u_salary_1_5_year': salary * 4}
 }
 ```
-### _Решение_
+### _Решение:_
 ```
 1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
 2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/object_info_3
@@ -209,6 +214,7 @@ request url params:
 ____________________
 
 ### :small_orange_diamond: [EP_6](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_6,-%22%2C)
+### _Дано_
 ```
 Method: GET
 EndPoint: /object_info_4
@@ -217,15 +223,15 @@ request url params:
  age: int
  salary: int
 ```
+### _Что должно придти в response:_
 ```
-Что должно придти в response:
 {
  'name': name,
  'age': int(age),
  'salary': [salary, str(salary * 2), str(salary * 3)]
 }
 ```
-### _Решение_
+### _Решение:_
 ```
 1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
 2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/object_info_4
@@ -241,6 +247,7 @@ request url params:
 ____________________
 
 ### :small_orange_diamond: [EP_7](https://github.com/EvgeneyKEO/Postman/blob/main/Home%20work%20%231.postman_collection.json#:~:text=name%22%3A%20%22-,EP_7,-%22%2C)
+### _Дано_
 ```
 Method: POST
 EndPoint: /user_info_2
@@ -249,9 +256,8 @@ request form data:
  age: int
  salary: int
 ```
-### _Решение_
+### _Что должно придти в response:_
 ```
-Что должно придти в response:
 {
  'start_qa_salary': salary,
  'qa_salary_after_6_months': salary * 2,
@@ -263,6 +269,7 @@ request form data:
             'u_salary_5_years': salary * 4.2}
 }
 ```
+### _Решение:_
 ```
 1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
 2. Выбираем метод запроса POST, вставляем в URL - http://162.55.220.72:5006/user_info_2

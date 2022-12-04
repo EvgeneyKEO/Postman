@@ -36,9 +36,11 @@ request url params:
 ```
 ```
 1. Создаем новую коллекцию - переходим в раздел "Collections" --> нажимаем "+" 
-2. Выбираем метод запроса GET, вставляем URL http://162.55.220.72:5006/get_method
-3. На вкладке "Params" заносим параметры в столбцы "KEY" (ключ) - (name, age), "Value" (значение) - Evgen, 24 соответственно 
-4. response: 
+2. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
+2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/get_method
+3. На вкладке "Params" заносим параметры в столбцы "KEY" (ключ) - (name, age),
+"Value" (значение) - Evgen, 24 соответственно 
+4. Нажимаем Send и получаем response: 
 [
     “Evgeney”,
     “24”
@@ -58,11 +60,7 @@ request form data:
 
 ```
 response: 
-{'name': name,
-          'age': age,
-          'salary': salary,
-          'family': {'children': [['Alex', 24], ['Kate', 12]],
-                     'u_salary_1_5_year': salary * 4}}
+
 ```
 ____________________
 

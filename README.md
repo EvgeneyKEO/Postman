@@ -42,8 +42,8 @@ request url params:
 "VALUE" (значение) - Evgen, 24 соответственно 
 5. Нажимаем Send и получаем response: 
 [
-    “Evgeney”,
-    “24”
+ “Evgeney”,
+ “24”
 ]
 ```
 ____________________
@@ -64,12 +64,11 @@ request form data:
 "VALUE" (значение) - Evgen, 24, 1000 соответственно 
 4. Нажимаем Send и получаем response: 
 {
-    "age": "24",
-    "family": {
-        "children": [
+ "age": "24",
+ "family": {"children": [
             ["Alex", 24],
             ["Kate", 12]
-        ],
+          ],
         "u_salary_1_5_year": 4000
     },
     "name": "Evgen",
@@ -103,10 +102,10 @@ request url params:
 "VALUE" (значение) - Evgen, 24, 102 соответственно
 4. Нажимаем Send и получаем response:
 {
-    "age": 24,
-    "daily_food": 1.224,
-    "daily_sleep": 255.0,
-    "name": "Evgen"
+ "age": 24,
+ "daily_food": 1.224,
+ "daily_sleep": 255.0,
+ "name": "Evgen"
 }
 ```
 ____________________
@@ -174,8 +173,8 @@ request url params:
                           ['Alex', 24], ['Kate', 12] 
                          ],
              'pets': {
-                         'cat':{'name':'Sunny','age': 3},
-                         'dog':{'name':'Luky','age': 4}
+                      'cat':{'name':'Sunny','age': 3},
+                      'dog':{'name':'Luky','age': 4}
                      },
   'u_salary_1_5_year': salary * 4}
 }

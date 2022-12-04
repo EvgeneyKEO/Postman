@@ -186,7 +186,6 @@ request url params:
 3. Выбираем вкладку "Params" заносим данные в столбцы "KEY" (ключ) - (name, age, salary),
 "VALUE" (значение) - Evgen, 24, 1000 соответственно
 4. Нажимаем Send и получаем response:
-response: 
 {
     "age": "24",
     "family": {
@@ -215,10 +214,24 @@ request url params:
  salary: int
 ```
 ```
-response: 
-{'name': name,
-          'age': int(age),
-          'salary': [salary, str(salary * 2), str(salary * 3)]}
+Что должно придти в response:
+{
+ 'name': name,
+ 'age': int(age),
+ 'salary': [salary, str(salary * 2), str(salary * 3)]
+}
+```
+```
+1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
+2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/object_info_4
+3. Выбираем вкладку "Params" заносим данные в столбцы "KEY" (ключ) - (name, age, salary),
+"VALUE" (значение) - Evgen, 24, 1000 соответственно
+4. Нажимаем Send и получаем response:
+{
+    "age": 24,
+    "name": "Evgen",
+    "salary": [1000, "2000", "3000"]
+}
 ```
 ____________________
 
@@ -232,16 +245,32 @@ request form data:
  salary: int
 ```
 ```
-response: 
-{'start_qa_salary': salary,
-          'qa_salary_after_6_months': salary * 2,
-          'qa_salary_after_12_months': salary * 2.7,
-          'qa_salary_after_1.5_year': salary * 3.3,
-          'qa_salary_after_3.5_years': salary * 3.8,
-          'person': {'u_name': [user_name, salary, age],
-                     'u_age': age,
-                     'u_salary_5_years': salary * 4.2}
-          }
+Что должно придти в response:
+{
+ 'start_qa_salary': salary,
+ 'qa_salary_after_6_months': salary * 2,
+ 'qa_salary_after_12_months': salary * 2.7,
+ 'qa_salary_after_1.5_year': salary * 3.3,
+ 'qa_salary_after_3.5_years': salary * 3.8,
+ 'person': {'u_name': [user_name, salary, age],
+            'u_age': age,
+            'u_salary_5_years': salary * 4.2}
+}
+```
+```
+1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
+2. Выбираем метод запроса POST, вставляем в URL - http://162.55.220.72:5006/user_info_2
+3. Выбираем вкладку "Body" заносим данные в столбцы "KEY" (ключ) - (name, age, salary),
+"VALUE" (значение) - Evgen, 24, 1 соответственно
+4. Нажимаем Send и получаем response:
+{
+    "person": {"u_age": 24, "u_name": ["Evgen", 1, 24],"u_salary_5_years": 4.2},
+    "qa_salary_after_1.5_year": 3.3,
+    "qa_salary_after_12_months": 2.7,
+    "qa_salary_after_3.5_years": 3.8,
+    "qa_salary_after_6_months": 2,
+    "start_qa_salary": 1
+}
 ```
 ____________________        
 

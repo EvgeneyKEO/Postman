@@ -472,17 +472,19 @@ pm.test("json response имеет параметр person", function () {
 });
 ```
 14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)
+> сделал с объявлением переменной
 ```
-let req_salary = +req.salary // сделал с объявлением переменной
+let req_salary = +req.salary 
 pm.test("start_qa_salary = salary из request", function () {
     pm.expect(resp.start_qa_salary).to.eql(req_salary);
 });
 ```
 15. Проверить, что параметр qa_salary_after_6_months равен salary*2 из request (salary забрать из request.)
+> не объявлял переменную, умножение переводит текстовое значение в цифру
 ```
 pm.test("qa_salary_after_6_months = salary*2 из request", function () {
     pm.expect(resp.qa_salary_after_6_months).to.eql(req.salary*2);
-}); //не объявлял переменную, умножение переводит текстовое значение в цифру
+});
 ```
 16. Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request.)
 ```
@@ -509,10 +511,11 @@ pm.test("в параметре person, 1-й элемент из u_name = salary 
 });
 ```
 20. Проверить, что что параметр u_age равен age из request (age забрать из request.)
+> не объявлял переменную, добавил + к req.age - формат поменялся на number
 ```
 pm.test("параметр u_age = age из request ", function () {
     pm.expect(resp.person.u_age).to.eql(+req.age);
-}); // не объявлял переменную, добавил + к req.age - формат поменялся на number
+});
 ```
 21. Проверить, что параметр u_salary_5_years равен salary*4.2 из request (salary забрать из request.)
 ```

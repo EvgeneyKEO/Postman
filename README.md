@@ -37,10 +37,10 @@ request url params:
 ```
 1. Создаем новую коллекцию - переходим в раздел "Collections" --> нажимаем "+" 
 2. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
-2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/get_method
-3. На вкладке "Params" заносим параметры в столбцы "KEY" (ключ) - (name, age),
-"Value" (значение) - Evgen, 24 соответственно 
-4. Нажимаем Send и получаем response: 
+3. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/get_method
+4. На вкладке "Params" заносим параметры в столбцы "KEY" (ключ) - (name, age),
+"VALUE" (значение) - Evgen, 24 соответственно 
+5. Нажимаем Send и получаем response: 
 [
     “Evgeney”,
     “24”
@@ -57,10 +57,30 @@ request form data:
  age: int
  salary: int
 ```
-
 ```
-response: 
-
+1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
+2. Выбираем метод запроса POST, вставляем в URL - http://162.55.220.72:5006/user_info_3
+3. Выбираем вкладку "Body" заносим данные в столбцы "KEY" (ключ) - (name, age, salary),
+"VALUE" (значение) - Evgen, 24, 1000 соответственно 
+4. Нажимаем Send и получаем response: 
+{
+    "age": "24",
+    "family": {
+        "children": [
+            [
+                "Alex",
+                24
+            ],
+            [
+                "Kate",
+                12
+            ]
+        ],
+        "u_salary_1_5_year": 4000
+    },
+    "name": "Evgen",
+    "salary": 1000
+}
 ```
 ____________________
 
@@ -74,11 +94,26 @@ request url params:
  weight: int
 ```
 ```
-response: 
-{'name': name,
-          'age': age,
-          'daily_food': weight * 0.012,
-          'daily_sleep': weight * 2.5}
+Что должно придти в response:
+{
+ 'name': name,
+ 'age': age,
+ 'daily_food': weight * 0.012,
+ 'daily_sleep': weight * 2.5
+}
+```
+```
+1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
+2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/object_info_1
+3. Выбираем вкладку "Params" заносим данные в столбцы "KEY" (ключ) - (name, age, weight),
+"VALUE" (значение) - Evgen, 24, 102 соответственно
+4. Нажимаем Send и получаем response:
+{
+    "age": 24,
+    "daily_food": 1.224,
+    "daily_sleep": 255.0,
+    "name": "Evgen"
+}
 ```
 ____________________
 
@@ -92,16 +127,40 @@ request url params:
  salary: int
 ```
 ```
-response: 
-{'start_qa_salary': salary,
-          'qa_salary_after_6_months': salary * 2,
-          'qa_salary_after_12_months': salary * 2.7,
-          'qa_salary_after_1.5_year': salary * 3.3,
-          'qa_salary_after_3.5_years': salary * 3.8,
-          'person': {'u_name': [user_name, salary, age],
-                     'u_age': age,
-                     'u_salary_5_years': salary * 4.2}
-          }
+Что должно придти в response:
+{
+ 'start_qa_salary': salary,
+ 'qa_salary_after_6_months': salary * 2,
+ 'qa_salary_after_12_months': salary * 2.7,
+ 'qa_salary_after_1.5_year': salary * 3.3,
+ 'qa_salary_after_3.5_years': salary * 3.8,
+ 'person': {'u_name': [user_name, salary, age],
+            'u_age': age,
+            'u_salary_5_years': salary * 4.2}
+}
+```
+```
+1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
+2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/object_info_2
+3. Выбираем вкладку "Params" заносим данные в столбцы "KEY" (ключ) - (name, age, salary),
+"VALUE" (значение) - Evgen, 24, 1000 соответственно
+4. Нажимаем Send и получаем response:
+{
+    "person": {
+        "u_age": 24,
+        "u_name": [
+            "Evgen",
+            1000,
+            24
+        ],
+        "u_salary_5_years": 4200.0
+    },
+    "qa_salary_after_1.5_year": 3300.0,
+    "qa_salary_after_12_months": 2700.0,
+    "qa_salary_after_3.5_years": 3800.0,
+    "qa_salary_after_6_months": 2000,
+    "start_qa_salary": 1000
+}
 ```
 ____________________
 
@@ -115,17 +174,25 @@ request url params:
  salary: int
 ```
 ```
+Что должно придти в response:
+{
+ 'name': name,
+ 'age': age,
+ 'salary': salary,
+ 'family': {
+             'children': [
+                          ['Alex', 24], ['Kate', 12] 
+                         ],
+             'pets': {
+                         'cat':{'name':'Sunny','age': 3},
+                         'dog':{'name':'Luky','age': 4}
+                     },
+  'u_salary_1_5_year': salary * 4}
+}
+```
+```
 response: 
-{'name': name,
-          'age': age,
-          'salary': salary,
-          'family': {'children': [['Alex', 24], ['Kate', 12]],
-                     'pets': {'cat':{'name':'Sunny',
-                                     'age': 3},
-                              'dog':{'name':'Luky',
-                                     'age': 4}},
-                     'u_salary_1_5_year': salary * 4}
-          }
+
 ```
 ____________________
 

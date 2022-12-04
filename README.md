@@ -67,14 +67,8 @@ request form data:
     "age": "24",
     "family": {
         "children": [
-            [
-                "Alex",
-                24
-            ],
-            [
-                "Kate",
-                12
-            ]
+            ["Alex", 24],
+            ["Kate", 12]
         ],
         "u_salary_1_5_year": 4000
     },
@@ -148,11 +142,7 @@ request url params:
 {
     "person": {
         "u_age": 24,
-        "u_name": [
-            "Evgen",
-            1000,
-            24
-        ],
+        "u_name": ["Evgen",1000,24],
         "u_salary_5_years": 4200.0
     },
     "qa_salary_after_1.5_year": 3300.0,
@@ -191,8 +181,27 @@ request url params:
 }
 ```
 ```
+1. Создаем новый запрос ПКМ по названию ранее созданной коллекции, выбираем "Add request"
+2. Выбираем метод запроса GET, вставляем в URL - http://162.55.220.72:5006/object_info_3
+3. Выбираем вкладку "Params" заносим данные в столбцы "KEY" (ключ) - (name, age, salary),
+"VALUE" (значение) - Evgen, 24, 1000 соответственно
+4. Нажимаем Send и получаем response:
 response: 
-
+{
+    "age": "24",
+    "family": {
+        "children": [
+            ["Alex", 24],
+            ["Kate", 12]
+        ],
+        "pets": {"cat": {"age": 3,"name": "Sunny"},
+                 "dog": {"age": 4, "name": "Luky"}
+        },
+        "u_salary_1_5_year": 4000
+    },
+    "name": "Evgen",
+    "salary": 1000
+}
 ```
 ____________________
 

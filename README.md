@@ -17,7 +17,7 @@ __________________
 [:four: №_4](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-4)
 [:five: №_5](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-5)
 ___________________
-# :large_orange_diamond: [Postman_HW_1](https://github.com/EvgeneyKEO/Postman/blob/9d4ab651c2b9739fea00c9e1ffc1bf2bb84599f2/Home%20work%20%231.postman_collection.json)
+# :large_orange_diamond: [Postman_HW_1](https://github.com/EvgeneyKEO/Postman/blob/4ef821160358bc7d982ca6cd84b4a0f43a9dcf71/Home%20work%20%231.postman_collection.json)
 ### _Создать запросы в Postman_
 ```
 Protocol: http

@@ -11,11 +11,11 @@ __________________
 
 
 ### [:arrow_forward: Postman_HW_2](https://github.com/EvgeneyKEO/Postman#large_orange_diamond-postman_hw_2)
-> [:one: №_1]()
-[:two: №_2]()
-[:three: №_3]()
-[:four: №_4]()
-[:five: №_5]()
+> [:one: №_1](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-1)
+[:two: №_2](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-2)
+[:three: №_3](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-3)
+[:four: №_4](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-4)
+[:five: №_5](https://github.com/EvgeneyKEO/Postman/blob/main/README.md#small_orange_diamond-5)
 ___________________
 # :large_orange_diamond: [Postman_HW_1](https://github.com/EvgeneyKEO/Postman/blob/9d4ab651c2b9739fea00c9e1ffc1bf2bb84599f2/Home%20work%20%231.postman_collection.json)
 Создать запросы в Postman.

@@ -1,0 +1,902 @@
+{
+	"info": {
+		"_postman_id": "2a900f94-6df3-4186-a2fa-5a6da24b5c27",
+		"name": "Home work #3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21929490"
+	},
+	"item": [
+		{
+			"name": "/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//1. Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Спарсить response body в json\r",
+							"let resp = pm.response.json();\r",
+							"\r",
+							"// Объявляем переменную для токена\r",
+							"let resp_token = resp.token;\r",
+							"\r",
+							"// Передать в окружение токен\r",
+							"pm.environment.set(\"token\", resp_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "evgen",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "312106Cc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}login",
+					"host": [
+						"{{url}}login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Спарсить response body в json\r",
+							"let resp = pm.response.json();\r",
+							"console.log(\"response:\", resp);\r",
+							"\r",
+							"// Спарсить request (из POST метода, если выбран raw=JSON в Body)\r",
+							"let req = JSON.parse(pm.request.body);\r",
+							"console.log(\"request:\", req);\r",
+							"\r",
+							"// 1. Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// 2. Проверить структуру json в ответе\r",
+							"\r",
+							"//Объявляем переменную shema для того, чтобы сравнить ее с response (обычно данная схема должна быть подготовлена на проекте заранее, в данной домашке мы конвертировали наш JSON из response'a в JSON-схему и после этого прогоняли тест)\r",
+							"let schema = {\r",
+							" \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"person\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"u_age\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"u_name\": {\r",
+							"          \"type\": \"array\",\r",
+							"          \"items\": [\r",
+							"            {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            {\r",
+							"              \"type\": \"integer\"\r",
+							"            }\r",
+							"          ]\r",
+							"        },\r",
+							"        \"u_salary_1_5_year\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"u_age\",\r",
+							"        \"u_name\",\r",
+							"        \"u_salary_1_5_year\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \"qa_salary_after_12_months\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"qa_salary_after_6_months\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"start_qa_salary\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"person\",\r",
+							"    \"qa_salary_after_12_months\",\r",
+							"    \"qa_salary_after_6_months\",\r",
+							"    \"start_qa_salary\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"//Проверяем response на соответствие JSON-схеме\r",
+							"pm.test(\"Проверка структуры json в ответе\", () => {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр person\r",
+							"pm.test(\"JS0N response имеет параметр person\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"person\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что person в JS0N response имеет параметр u_age\r",
+							"pm.test(\"person в JS0N response имеет параметр u_age\", function () {\r",
+							"    pm.expect(resp.person).to.have.property(\"u_age\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что person в JS0N response имеет параметр u_name\r",
+							"pm.test(\"person в JS0N response имеет параметр u_name\", function () {\r",
+							"    pm.expect(resp.person).to.have.property(\"u_name\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что person в JS0N response имеет параметр u_salary_1_5_year\r",
+							"pm.test(\"person в JS0N response имеет параметр u_salary_1_5_year\", function () {\r",
+							"    pm.expect(resp.person).to.have.property(\"u_salary_1_5_year\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр qa_salary_after_12_months\r",
+							"pm.test(\"JS0N response имеет параметр qa_salary_after_12_months\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"qa_salary_after_12_months\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр qa_salary_after_6_months\r",
+							"pm.test(\"JS0N response имеет параметр qa_salary_after_6_months\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"qa_salary_after_6_months\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр start_qa_salary\r",
+							"pm.test(\"JS0N response имеет параметр start_qa_salary\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"start_qa_salary\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что name в ответе равно name в request\r",
+							"pm.test(\"Name in response = name in request\", function () {\r",
+							"    pm.expect(resp.person.u_name[0]).to.eql(req.name);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что salary в ответе равно salary в request\r",
+							"pm.test(\"Salary in response = Salary in request\", function () {\r",
+							"    pm.expect(resp.person.u_name[1]).to.eql(req.salary);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что age в ответе равно age в request \r",
+							"pm.test(\"age in response = age in request\", function () {\r",
+							"    pm.expect(resp.person.u_name[2]).to.eql(req.age);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// 3. В ответе указаны коэффициенты умножения salary, напишите тесты по проверке правильности результата перемножения на коэффициент.\r",
+							"\r",
+							"// Проверить, что start_qa_salary в ответе равно salary в request\r",
+							"pm.test(\"start_qa_salary in response = salary in request\", function () {\r",
+							"    pm.expect(resp.start_qa_salary).to.eql(req.salary);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что qa_salary_after_6_months в ответе равно salary*2 из request\r",
+							"pm.test(\"qa_salary_after_6_months in response = salary*2 in request\", function () {\r",
+							"    pm.expect(resp.qa_salary_after_6_months).to.eql(req.salary*2);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что qa_salary_after_12_months в ответе равно salary*2,9 из request\r",
+							"pm.test(\"qa_salary_after_12_months in response = salary*2,9 in request\", function () {\r",
+							"    pm.expect(resp.qa_salary_after_6_months).to.eql(req.salary*2,9);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что u_salary_1_5_year в ответе равно salary*4 из request\r",
+							"pm.test(\"u_salary_1_5_year in response = salary*4 in request\", function () {\r",
+							"    pm.expect(resp.person.u_salary_1_5_year).to.eql(req.salary*4);\r",
+							"});\r",
+							"\r",
+							"//4. Достать значение из поля 'u_salary_1.5_year' и передать в поле salary запроса http://162.55.220.72:5005/get_test_user\r",
+							" \r",
+							"let u_salary_1_5_year = resp.person.u_salary_1_5_year; // Объявляю переменную\r",
+							"pm.environment.set(\"salary_1_5_year\", u_salary_1_5_year);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"age\": 24,\r\n\"salary\": 1000,\r\n\"name\": \"evgen\",\r\n\"auth_token\": \"{{token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}user_info",
+					"host": [
+						"{{url}}user_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/new_data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Спарсить response body в json\r",
+							"let resp = pm.response.json();\r",
+							"console.log(\"response:\", resp);\r",
+							"\r",
+							"// Спарсить request (из POST метода, если данные записаны в form-data в формате key-value)\r",
+							"let req = request.data;\r",
+							"console.log(\"request:\", req);\r",
+							"\r",
+							"\r",
+							"//1. Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// 2. Проверить структуру json в ответе\r",
+							"\r",
+							"//Объявляем переменную shema для того, чтобы сравнить ее с response (обычно данная схема должна быть подготовлена на проекте заранее, в данной домашке мы конвертировали наш JSON из response'a в JSON-схему и после этого прогоняли тест)\r",
+							"let schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"age\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"salary\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"age\",\r",
+							"    \"name\",\r",
+							"    \"salary\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"//Проверяем JSON из response на соответствие JSON-схеме\r",
+							"pm.test(\"Проверка структуры json в ответе\", () => {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр age\r",
+							"pm.test(\"JS0N response имеет параметр age\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"age\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр name\r",
+							"pm.test(\"JS0N response имеет параметр name\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"name\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр salary\r",
+							"pm.test(\"JS0N response имеет параметр salary\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"salary\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что age в ответе равно age в request\r",
+							"// Добавил плюс перед \"req.age\", так как все цифры из request спарсились как string (строка)\r",
+							"pm.test(\"age in response = age in request\", function () {\r",
+							"    pm.expect(resp.age).to.eql(+req.age);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что name в ответе равно name в request\r",
+							"pm.test(\"name in response = name in request\", function () {\r",
+							"    pm.expect(resp.name).to.eql(req.name);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// 3. В ответе указаны коэффициенты умножения salary, напишите тесты по проверке правильности результата перемножения на коэффициент.\r",
+							"\r",
+							"// Проверить, что salary (0 элемент массива) в ответе равно salary в request\r",
+							"pm.test(\"salary (0 элемент массива) in response = salary in request\", function () {\r",
+							"    pm.expect(resp.salary[0]).to.eql(+req.salary);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Проверить, что salary (1 элемент массива) в ответе равно salary*2 в request\r",
+							"pm.test(\"salary (1 элемент массива) in response = salary*2 in request\", function () {\r",
+							"    let resp_salary_1 = +resp.salary[1]\r",
+							"    pm.expect(resp_salary_1).to.eql(req.salary*2);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Проверить, что salary (2 элемент массива) в ответе равно salary*3 в request\r",
+							"pm.test(\"salary (2 элемент массива) in response = salary*2 in request\", function () {\r",
+							"    let resp_salary_2 = +resp.salary[2]\r",
+							"    pm.expect(resp_salary_2).to.eql(req.salary*3);\r",
+							"});\r",
+							"\r",
+							"// 4. Проверить, что 2-й элемент массива salary больше 1-го и 0-го\r",
+							"\r",
+							"// salary[2] > salary[0]\r",
+							"pm.test(\"salary[2] > salary[0]\", function () {\r",
+							"    pm.expect(+resp.salary[2]).to.be.above(resp.salary[0]);\r",
+							"});\r",
+							"\r",
+							"// salary[2] > salary[1]\r",
+							"pm.test(\"salary[2] > salary[1]\", function () {\r",
+							"    pm.expect(+resp.salary[2]).to.be.above(+resp.salary[1]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "24",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "evgen",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}new_data",
+					"host": [
+						"{{url}}new_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/test_pet_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Спарсить response body в json\r",
+							"let resp = pm.response.json();\r",
+							"console.log(\"response:\", resp);\r",
+							"\r",
+							"// Спарсить request (из POST метода, если данные записаны в form-data в формате key-value)\r",
+							"let req = request.data;\r",
+							"console.log(\"request:\", req);\r",
+							"\r",
+							"\r",
+							"//1. Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// 2. Проверка структуры JSON в ответе.\r",
+							"\r",
+							"//Объявляем переменную shema для того, чтобы сравнить ее с response (обычно данная схема должна быть подготовлена на проекте заранее, в данной домашке мы конвертировали наш JSON из response'a в JSON-схему и после этого прогоняли тест)\r",
+							"let schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"age\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"daily_food\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"daily_sleep\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"age\",\r",
+							"    \"daily_food\",\r",
+							"    \"daily_sleep\",\r",
+							"    \"name\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"//Проверяем JSON из response на соответствие JSON-схеме\r",
+							"pm.test(\"Проверка структуры json в ответе\", () => {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр age\r",
+							"pm.test(\"JS0N response имеет параметр age\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"age\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр daily_food\r",
+							"pm.test(\"JS0N response имеет параметр daily_food\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"daily_food\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр daily_sleep\r",
+							"pm.test(\"JS0N response имеет параметр daily_sleep\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"daily_sleep\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр name\r",
+							"pm.test(\"JS0N response имеет параметр name\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"name\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что age в ответе равно age в request\r",
+							"pm.test(\"age in response = age in request\", function () {\r",
+							"    pm.expect(resp.age).to.eql(+req.age);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что name в ответе равно name в request\r",
+							"pm.test(\"name in response = name in request\", function () {\r",
+							"    pm.expect(resp.name).to.eql(req.name);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// 3. В ответе указаны коэффициенты умножения weight, напишите тесты по проверке правильности результата перемножения на коэффициент.\r",
+							"\r",
+							"// Проверить, что daily_food в ответе равно weight в request * 0.012\r",
+							"pm.test(\"daily_food in response = weight*0.012 in request\", function () {\r",
+							"    pm.expect(resp.daily_food).to.eql(req.weight*0.012);\r",
+							"});\r",
+							"\r",
+							"// Проверить, что daily_sleep в ответе равно weight в request * 2.5\r",
+							"pm.test(\"daily_sleep in response = weight*2.5 in request\", function () {\r",
+							"    pm.expect(resp.daily_sleep).to.eql(req.weight*2.5);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "13",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Archi",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}test_pet_info",
+					"host": [
+						"{{url}}test_pet_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/get_test_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Спарсить response body в json\r",
+							"let resp = pm.response.json();\r",
+							"console.log(\"response:\", resp);\r",
+							"\r",
+							"// Спарсить request (из POST метода, если данные записаны в form-data в формате key-value)\r",
+							"let req = request.data;\r",
+							"console.log(\"request:\", req);\r",
+							"\r",
+							"//1.Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// 2. Проверка структуры json в ответе.\r",
+							"\r",
+							"//Объявляем переменную shema для того, чтобы сравнить ее с response (обычно данная схема должна быть подготовлена на проекте заранее, в данной домашке мы конвертировали наш JSON из response'a в JSON-схему и после этого прогоняли тест)\r",
+							"let schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"age\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"family\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"children\": {\r",
+							"          \"type\": \"array\",\r",
+							"          \"items\": [\r",
+							"            {\r",
+							"              \"type\": \"array\",\r",
+							"              \"items\": [\r",
+							"                {\r",
+							"                  \"type\": \"string\"\r",
+							"                },\r",
+							"                {\r",
+							"                  \"type\": \"integer\"\r",
+							"                }\r",
+							"              ]\r",
+							"            },\r",
+							"            {\r",
+							"              \"type\": \"array\",\r",
+							"              \"items\": [\r",
+							"                {\r",
+							"                  \"type\": \"string\"\r",
+							"                },\r",
+							"                {\r",
+							"                  \"type\": \"integer\"\r",
+							"                }\r",
+							"              ]\r",
+							"            }\r",
+							"          ]\r",
+							"        },\r",
+							"        \"u_salary_1_5_year\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"children\",\r",
+							"        \"u_salary_1_5_year\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \"name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"salary\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"age\",\r",
+							"    \"family\",\r",
+							"    \"name\",\r",
+							"    \"salary\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"//Проверяем JSON из response на соответствие JSON-схеме\r",
+							"pm.test(\"Проверка структуры json в ответе\", () => {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр age\r",
+							"pm.test(\"JS0N response имеет параметр age\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"age\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр family\r",
+							"pm.test(\"JS0N response имеет параметр family\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"family\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр name\r",
+							"pm.test(\"JS0N response имеет параметр name\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"name\");\r",
+							"});\r",
+							"\r",
+							"// Проверить, что JS0N response имеет параметр salary\r",
+							"pm.test(\"JS0N response имеет параметр salary\", function () {\r",
+							"    pm.expect(resp).to.have.property(\"salary\");\r",
+							"});\r",
+							"\r",
+							"//3. Проверить что занчение поля name = значению переменной name из окружения\r",
+							"    \r",
+							"    //Передаем значение поля name в окружение\r",
+							"    pm.environment.set(\"name\", req.name);\r",
+							"\r",
+							"    //Забираем из окружения name\r",
+							"    let n_environment = pm.environment.get('name');\r",
+							"    console.log('name_from_environment = ', n_environment);\r",
+							"\r",
+							"    //Сравниваем name из окружения с name из запроса\r",
+							"    pm.test(\"name из окружения = name из запроса\", function () {\r",
+							"    pm.expect(req.name).to.eql(n_environment);\r",
+							"});\r",
+							"\r",
+							"    //Сравниваем name из окружения с name из ответа\r",
+							"    pm.test(\"name из окружения = name из ответа\", function () {\r",
+							"    pm.expect(resp.name).to.eql(n_environment);\r",
+							"});\r",
+							"\r",
+							"//4) Проверить что занчение поля age в ответе соответствует отправленному в запросе значению поля age\r",
+							"\r",
+							"//Сравниваем age из запроса age из ответа\r",
+							"pm.test(\"age из запроса = age из ответа\", function () {\r",
+							" pm.expect(req.age).to.eql(resp.age);\r",
+							"});\r",
+							"\r",
+							"//Age из запроса и age из ответа, выведенные в консоль\r",
+							"console.log('age_request =', req.age);\r",
+							"console.log('age_resp =', resp.age);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "24",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "evgen",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}get_test_user",
+					"host": [
+						"{{url}}get_test_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/currency",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// 1) Можете взять любой объект из присланного списка, используйте js random. В объекте возьмите Cur_ID и передать через окружение в следующий запрос.\r",
+							"\r",
+							"// Спарсить response body в json\r",
+							"let resp = pm.response.json();\r",
+							"console.log(\"response:\", resp);\r",
+							"\r",
+							"//Math.floor - округление числа в меньшую сторону; \r",
+							"// Math.random - возвращает псевдослучайное число с плавающей запятой; \r",
+							"// length - возвращает количество элементов в массиве. Если элементов нет, то свойство возвращает 0.\r",
+							"\r",
+							"let randomObj =resp[Math.floor(Math.random() * resp.length)];\r",
+							"pm.environment.set (\"Cur_ID\", randomObj.Cur_ID);\r",
+							"\r",
+							"//Проверим передалось ли в окружение рандомное значение Cur_ID\r",
+							"console.log(\"cur_id_env =\", pm.environment.get(\"Cur_ID\"))\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://54.157.99.22:80/currency",
+					"protocol": "http",
+					"host": [
+						"54",
+						"157",
+						"99",
+						"22"
+					],
+					"port": "80",
+					"path": [
+						"currency"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/curr_byn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//1. Проверяем статус код\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Спарсить response body в json\r",
+							"let resp = pm.response.json();\r",
+							"console.log(\"response:\", resp);\r",
+							"\r",
+							"// Спарсить request (из POST метода, если данные записаны в form-data в формате key-value)\r",
+							"let req = request.data;\r",
+							"console.log(\"request:\", req);\r",
+							"\r",
+							"//Забираем Cur_ID из окружения\r",
+							"let cur_id_env = pm.environment.get(\"Cur_ID\")\r",
+							"console.log(\"cur_id_env = \", cur_id_env)\r",
+							"\r",
+							"//Сравниваем cur_id из ответа с cur_id из окружения\r",
+							"pm.test(\"cur_id из ответа = cur_id из окружения\", function () {\r",
+							" pm.expect(resp.Cur_ID).to.eql(cur_id_env);\r",
+							"});\r",
+							"\r",
+							"//Объявляем переменную shema для того, чтобы сравнить ее с response (обычно данная схема должна быть подготовлена на проекте заранее, в данной домашке мы конвертировали наш JSON из response'a в JSON-схему и после этого прогоняли тест)\r",
+							"let schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"Cur_Abbreviation\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"Cur_ID\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"Cur_Name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"Cur_OfficialRate\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"Cur_Scale\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"Date\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"Cur_Abbreviation\",\r",
+							"    \"Cur_ID\",\r",
+							"    \"Cur_Name\",\r",
+							"    \"Cur_OfficialRate\",\r",
+							"    \"Cur_Scale\",\r",
+							"    \"Date\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"//Проверяем JSON из response на соответствие JSON-схеме\r",
+							"pm.test(\"Проверка структуры json в ответе\", () => {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						},
+						{
+							"key": "curr_code",
+							"value": "{{Cur_ID}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://54.157.99.22:80/curr_byn",
+					"protocol": "http",
+					"host": [
+						"54",
+						"157",
+						"99",
+						"22"
+					],
+					"port": "80",
+					"path": [
+						"curr_byn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -647,18 +647,3 @@ pm.test("параметр u_salary_5_years = salary*4.2", function () {
 for (let i in resp.person){
     console.log("Property:", i, "property value:", resp.person[i])
 }
-```
-//1. Статус код 200
-pm.test("Status code is 200", function () {
-    pm.response.to.have.status(200);
-});
-
-// Спарсить response body в json
-let resp = pm.response.json();
-
-// Объявляем переменную для токена
-let resp_token = resp.token;
-
-// Передать в окружение токен
-pm.environment.set("token", resp_token);
-```

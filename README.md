@@ -647,7 +647,9 @@ pm.test("параметр u_salary_5_years = salary*4.2", function () {
 for (let i in resp.person){
     console.log("Property:", i, "property value:", resp.person[i])
 }
-```javascript
+```
+
+``` javascript
 //1. Статус код 200
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
